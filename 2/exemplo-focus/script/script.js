@@ -9,22 +9,22 @@ const InputNews = document.getElementById("cadastroInputNews");
 const inputArea = document.getElementById("cadastroInputArea");
 const inputLevel = document.getElementsByName("level");
 
-botao.addEventListener ("click",  function(evento){
+botao.addEventListener ("click", function(evento){
     evento.preventDefault();
-
-    const optionSelect = inputArea.options
-    [inputArea.selectedIndex]
-
     let radioItem;
-
-    for(let i = 0; i < inputLevel.lenght; i ++) {
-
+    for(let i = 0; i < inputLevel.length; i++) {
+        if(inputLevel[i].value === "Junior" && inputLevel[i].checked) {
+            alert("junior: 0 - 2 anos de experiência")
+        }else if(inputLevel[i].value === "Pleno" && inputLevel[i].checked) {
+            alert("pleno: 2 - 5 anos de experiência;")
+        }else if(inputLevel[i].value === "Senior" && inputLevel[i].checked) {
+            alert("senior 5+ anos de experiência;")
+        }
     }
-
     // console.log(InputNews)
     // console.log(InputNews.checked)
-    
-    
+
+
 
     if(inputNome.value === undefined || inputNome.value === null || inputNome.value === "" || inputNome.value === " "){
         inputNome.focus();
@@ -52,13 +52,31 @@ botao.addEventListener ("click",  function(evento){
     } else if (inputPassword.value !== inputPasswordConfirm.value) {
         alert("Burro! você errou a senha")
         return false;
-    }
-    else if (inputPassword.value.length < 7) {
+    } else if (inputPassword.value.length < 7) {
         alert("A senha deve ter mais que 7 digitos")
         return false;
+    } else if (InputNews.checked === false) {
+        alert("É uma pena que você não deseja receber nosso conteúdo exclusivo :c");
     }
     // } else if (inputPassword.value.length < 7) {
     //     alert("Tem que ter 7 ou mais dígitos");
     // }
     //  alert("funcionou");
 })
+
+
+inputArea.addEventListener("change", function(evento){
+    const optionSelect = inputArea.options [inputArea.selectedIndex].value;
+
+    if(optionSelect === "Front-End") {
+        inputArea.style.backgroundColor = "blue";
+    } else if(optionSelect === "Back-End") {
+        inputArea.style.backgroundColor = "green";
+    } else if(optionSelect === "UX Designer") {
+        inputArea.style.backgroundColor = "pink";
+    } else if(optionSelect === "UI Designer") {
+        inputArea.style.backgroundColor = "orange";
+    }
+})
+
+

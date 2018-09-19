@@ -24,7 +24,7 @@ botao.addEventListener ("click", function(evento){
     // console.log(InputNews)
     // console.log(InputNews.checked)
 
-
+    //TESTE
 
     if(inputNome.value === undefined || inputNome.value === null || inputNome.value === "" || inputNome.value === " "){
         inputNome.focus();
@@ -58,25 +58,34 @@ botao.addEventListener ("click", function(evento){
     } else if (InputNews.checked === false) {
         alert("É uma pena que você não deseja receber nosso conteúdo exclusivo :c");
     }
-    // } else if (inputPassword.value.length < 7) {
-    //     alert("Tem que ter 7 ou mais dígitos");
-    // }
-    //  alert("funcionou");
+    document.querySelector("body").style.backgroundColor = "#fff";
+    const form = this.closest("form");
+    form.submit();
 })
 
 
 inputArea.addEventListener("change", function(evento){
     const optionSelect = inputArea.options [inputArea.selectedIndex].value;
 
-    if(optionSelect === "Front-End") {
-        inputArea.style.backgroundColor = "blue";
-    } else if(optionSelect === "Back-End") {
-        inputArea.style.backgroundColor = "green";
-    } else if(optionSelect === "UX Designer") {
-        inputArea.style.backgroundColor = "pink";
-    } else if(optionSelect === "UI Designer") {
-        inputArea.style.backgroundColor = "orange";
+    if(inputArea.selectedIndex === 0) {
+        document.querySelector("body").style.backgroundColor = "blue";
+    } else if(inputArea.selectedIndex === 1) {
+        document.querySelector("body").style.backgroundColor = "green";
+    } else if(inputArea.selectedIndex === 2) {
+        document.querySelector("body").style.backgroundColor = "pink";
+    } else if(inputArea.selectedIndex === 3) {
+        document.querySelector("body").style.backgroundColor = "orange";
     }
+
+    // if(optionSelect === "Front-End") {
+    //     inputArea.style.backgroundColor = "blue";
+    // } else if(optionSelect === "Back-End") {
+    //     inputArea.style.backgroundColor = "green";
+    // } else if(optionSelect === "UX Designer") {
+    //     inputArea.style.backgroundColor = "pink";
+    // } else if(optionSelect === "UI Designer") {
+    //     inputArea.style.backgroundColor = "orange";
+    // }
 })
 
 

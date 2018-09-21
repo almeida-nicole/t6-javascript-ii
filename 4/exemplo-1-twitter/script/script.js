@@ -1,8 +1,9 @@
 const botao = document.querySelector(".tweet-composer__button");
+const tweetInput = document.getElementById("tweetComposerInput");
 
 botao.addEventListener("click", function(evento){
     evento.preventDefault();
-    const tweetInput = document.getElementById("tweetComposerInput");
+    
     const tweetTimeline = document.querySelector(".tweets-timeline");
     const tweet = document.createElement("p");
     tweet.className = "tweets-timeline__tweet";
@@ -19,14 +20,14 @@ botao.addEventListener("click", function(evento){
 
     const header = document.createElement("div");
     const date = new Date();
-    const data = date.getUTCDate();
+    const day = date.getUTCDate();
     const month = date.toLocaleString("pt-br", {month: "short"});
     
 
     header.className = "tweets-timeline__header";
-    header.innerHTML = `<span class="tweets-timeline__name">ana.js</span>
-    <span class="tweets-timeline__username">@naluhh</span>
-    <span class="tweets-timeline__date">${data} de ${month} </span>`
+    header.innerHTML = `<span class="tweets-timeline__name">Nicole Almeida</span>
+    <span class="tweets-timeline__username">@almeida-nic</span>
+    <span class="tweets-timeline__date">${day} de ${month}</span>`
     
     const footer = document.createElement("div")
     footer.className = "tweets-timeline__footer";
@@ -44,16 +45,7 @@ botao.addEventListener("click", function(evento){
 
 
     })
-
-    
-   
-    
-    // document.querySelector(".tweets-timeline__date").value = new Date().getTime();
-    
-   
-    
-   
-    
+        
     
     document.querySelector(".tweets-timeline").style.backgroundColor = '#fff';
     document.querySelector(".tweets-timeline").style.margin = '1.3px 0';
@@ -61,4 +53,34 @@ botao.addEventListener("click", function(evento){
     document.querySelector(".tweets-timeline").style.padding = '10px 20px';
     
     tweetInput.value = "";
+    document.getElementById("tweetComposerCounter").innerHTML = 280;
+})
+tweetInput.addEventListener("keyup", function(evento){
+    const textBox = this;
+    const maxLength = 280;
+    const counter = document.getElementById("tweetComposerCounter");
+
+    const valorAtual = maxLength - textBox.value.length;
+    counter.innerHTML = valorAtual;
+
+    if(textBox.value.length > maxLength) {
+        textBox.value = textBox.value.substring(0, maxLength)
+
+        counter.style.color = "red";
+        
+    }
+
+    // if(valorAtual <= 15) {
+    //     counter.style.color = "red";
+        
+    // }
+    
+    if(valorAtual < 0){
+        botao.disabled = true;
+
+    }else{
+        counter.style.color = "white";
+        botao.disabled = false;
+    }
+
 })
